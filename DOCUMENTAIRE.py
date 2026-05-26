@@ -25,9 +25,8 @@ class Documentaire:
         self._date_sortie = newdate_sortie
 
     def aff(self):
-        print(f'code = {self.getcode()}')
-        print(f'titre = {self.gettitre()}')
-        print(f'date de sortie {self.getdate_sortie()}')
+        print("\033[1mDOCUMENTARY INFO\033[0m")
+        print(self.Tostring())
 
     def orr(self, Documentaire):
         code1, titre1, ds1 = self.getcode(), self.gettitre(), self.getdate_sortie()
@@ -42,7 +41,7 @@ class Documentaire:
         pass
 
     def Tostring(self):
-        pass
+        return f"Code: {self.getcode()} | Title: {self.gettitre()} | Released: {self.getdate_sortie()}"
 
 
 class Exemplaire(Documentaire):
@@ -64,14 +63,11 @@ class Exemplaire(Documentaire):
         self._date_achat = newdate_achat
 
     def out(self):
-        print(f'code = {self.getcode()}')
-        print(f'titre = {self.gettitre()}')
-        print(f'date de sortie {self.getdate_sortie()}')
-        print(f"numero = {self.getnumero()}")
-        print(f"date achat = {self.getdate_achat()}")
+        print("\033[1mEXEMPLAR INFO\033[0m")
+        print(self.Tostring())
 
     def Tostring(self):
-        pass
+        return f"{super().Tostring()} | Num: {self.getnumero()} | Purchased: {self.getdate_achat()}"
 
 
 # Example of creating instances:
