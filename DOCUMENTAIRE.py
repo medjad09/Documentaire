@@ -1,10 +1,13 @@
 import copy
 
 class Documentaire:
+    _count = 0
+
     def __init__(self, _code, _titre, _date_sortie):
         self._code = _code
         self._titre = _titre
         self._date_sortie = _date_sortie
+        Documentaire._count += 1
 
     def getcode(self):
         return self._code
@@ -29,9 +32,9 @@ class Documentaire:
         print(f'titre = {self.gettitre()}')
         print(f'date de sortie {self.getdate_sortie()}')
 
-    def orr(self, Documentaire):
+    def orr(self, other):
         code1, titre1, ds1 = self.getcode(), self.gettitre(), self.getdate_sortie()
-        code2, titre2, ds2 = Documentaire.getcode(), Documentaire.gettitre(), Documentaire.getdate_sortie()
+        code2, titre2, ds2 = other.getcode(), other.gettitre(), other.getdate_sortie()
 
         if (code1 == code2) and (titre1 == titre2) and (ds1 == ds2):
             return "egale"
@@ -39,10 +42,10 @@ class Documentaire:
             return "n egale"
 
     def n_objet(self):
-        pass
+        return Documentaire._count
 
     def Tostring(self):
-        pass
+        return f"Documentaire [code={self._code}, titre={self._titre}, date_sortie={self._date_sortie}]"
 
 
 class Exemplaire(Documentaire):
@@ -71,7 +74,7 @@ class Exemplaire(Documentaire):
         print(f"date achat = {self.getdate_achat()}")
 
     def Tostring(self):
-        pass
+        return f"Exemplaire [code={self._code}, titre={self._titre}, date_sortie={self._date_sortie}, numero={self._numero}, date_achat={self._date_achat}]"
 
 
 # Example of creating instances:
